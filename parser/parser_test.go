@@ -2,13 +2,13 @@ package parser
 
 import (
 	"errors"
+	"github.com/davecgh/go-spew/spew"
+	"github.com/musabgultekin/otto/ast"
+	"github.com/musabgultekin/otto/file"
+	"github.com/musabgultekin/otto/underscore"
 	"regexp"
 	"strings"
 	"testing"
-	"github.com/robertkrimen/otto/ast"
-	"github.com/robertkrimen/otto/file"
-	"github.com/robertkrimen/otto/underscore"
-	"github.com/davecgh/go-spew/spew"
 	// "fmt"
 )
 
@@ -885,29 +885,29 @@ func TestParser(t *testing.T) {
 			const PI = 3.141593
         `, nil)
 
-  		// testing let
-        test(`
+		// testing let
+		test(`
 			let x = 5;
         `, nil)
 
-        spew.Dump(test(`
+		spew.Dump(test(`
             var abc = function(a, b, c){
             	var x = 69
             }
         `, nil))
 
-  	// 	 // testing arrow functions
-   //      test(`
-			// let x = y => y + 1
-   //      `, nil)
+		// 	 // testing arrow functions
+		//      test(`
+		// let x = y => y + 1
+		//      `, nil)
 
-  //      	test(`
+		//      	test(`
 		// 	let y = v => ({ even: v, odd: v + 1 })
-  //      	`, nil)
+		//      	`, nil)
 
-  //      	test(`
+		//      	test(`
 		// 	let z = (v, i) => v + i
-  //      	`, nil)
+		//      	`, nil)
 	})
 }
 

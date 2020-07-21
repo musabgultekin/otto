@@ -1,10 +1,10 @@
 package parser
 
 import (
+	"github.com/musabgultekin/otto/ast"
+	"github.com/musabgultekin/otto/file"
+	"github.com/musabgultekin/otto/token"
 	"regexp"
-	"github.com/robertkrimen/otto/ast"
-	"github.com/robertkrimen/otto/file"
-	"github.com/robertkrimen/otto/token"
 )
 
 func (self *_parser) parseIdentifier() *ast.Identifier {
@@ -239,7 +239,7 @@ func (self *_parser) parseBindingList(var_ file.Idx) []ast.Expression {
 	var bindingList []*ast.LexicalBindingExpression
 	var list []ast.Expression
 
-	for { 
+	for {
 		if self.mode&StoreComments != 0 {
 			self.comments.MarkComments(ast.LEADING)
 		}
@@ -258,15 +258,15 @@ func (self *_parser) parseBindingList(var_ file.Idx) []ast.Expression {
 	}
 
 	self.scope.declare(&ast.LexicalBindingDeclaration{
-		LetOrConst: var_, 
-		List: bindingList, 
+		LetOrConst: var_,
+		List:       bindingList,
 	})
 
 	return list
 }
 
 func (self *_parser) parseLexicalBindingExpression(bindingList *[]*ast.LexicalBindingExpression) ast.Expression {
-	
+
 	if self.token != token.IDENTIFIER {
 		idx := self.expect(token.IDENTIFIER)
 		self.nextStatement()
@@ -276,10 +276,10 @@ func (self *_parser) parseLexicalBindingExpression(bindingList *[]*ast.LexicalBi
 	literal := self.literal
 	idx := self.idx
 	self.next()
-	
+
 	node := &ast.LexicalBindingExpression{
-		Name: literal, 
-		Idx: idx,
+		Name: literal,
+		Idx:  idx,
 	}
 
 	if self.mode&StoreComments != 0 {
@@ -856,7 +856,6 @@ func (self *_parser) parseBitwiseAndExpression() ast.Expression {
 	next := self.parseEqualityExpression
 	left := next()
 
-
 	for self.token == token.AND {
 		if self.mode&StoreComments != 0 {
 			self.comments.Unset()
@@ -940,7 +939,6 @@ func (self *_parser) parseLogicalOrExpression() ast.Expression {
 	next := self.parseLogicalAndExpression
 	left := next()
 
-
 	for self.token == token.LOGICAL_OR {
 		if self.mode&StoreComments != 0 {
 			self.comments.Unset()
@@ -986,7 +984,7 @@ func (self *_parser) parseConditionlExpression() ast.Expression {
 
 func (self *_parser) parseAssignmentExpression() ast.Expression {
 	left := self.parseConditionlExpression()
-	if (self.token == token.ARROW_OPERATOR) {
+	if self.token == token.ARROW_OPERATOR {
 		self.next()
 		return self.parseArrowFunctionExpression(left.(*ast.ParameterList))
 	} else {
@@ -1052,48 +1050,49 @@ func (self *_parser) parseAssignmentExpression() ast.Expression {
 
 func (self *_parser) parseArrowFunctionExpression(parameterList *ast.ParameterList) ast.Expression {
 	// if self.token == token.LEFT_BRACE {
-		return &ast.ArrowFunctionExpression{
-			ParameterList: parameterList,
-			Body: self.parseBlockStatement(),
-		}
+	return &ast.ArrowFunctionExpression{
+		ParameterList: parameterList,
+		Body:          self.parseBlockStatement(),
+	}
 	// }
 	// TODO: Figure out how to make Body to be allowed to accept both AssignmentExpression AND Block Statement
 	/*
-	return &ast.ArrowFunctionExpression{
-		ParameterList: parameterList,
-		Body: self.parseAssignmentExpression(),
-	}*/
+		return &ast.ArrowFunctionExpression{
+			ParameterList: parameterList,
+			Body: self.parseAssignmentExpression(),
+		}*/
 }
+
 /*
 
 func (self *_parser) parseArrowParameters() ast.Expression {
-	if self.token == token.IDENTIFIER { 
+	if self.token == token.IDENTIFIER {
 		return self.parseIdentifier()
 	}
 
-	if self.token == token.LEFT_PARENTHESIS { 
+	if self.token == token.LEFT_PARENTHESIS {
 		return self.parseCoverParenthesizedExpressionAndArrowParameterList()
 	}
 }
 
 
 func (self *_parser) parseCoverParenthesizedExpressionAndArrowParameterList() ast.Expression {
-	idx0 := self.expect(token.LEFT_PARENTHESIS) 
-	for self.token != token.RIGHT_PARENTHESIS && self.token != token.EOF { 
+	idx0 := self.expect(token.LEFT_PARENTHESIS)
+	for self.token != token.RIGHT_PARENTHESIS && self.token != token.EOF {
 		Expression = self.parseExpression()
 	}
 	idx1 := self.expect(token.RIGHT_PARENTHESIS)
-	
+
 	return &ast.CoverParenthesizedExpressionAndArrowParameterList{
-		LeftParenthesis: idx0, 
-		RightParenthesis: idx1, 
-		Expression: Expression, 	
+		LeftParenthesis: idx0,
+		RightParenthesis: idx1,
+		Expression: Expression,
 	}
 }
 
-func (self *_parser) parseConciseBody() ast.Expression { 
-	// TODO: Figure out how to do look ahead 
-	// TODO: if look_ahead != token.LEFT_BRACES, proceed to parse AssignmentExpression 
+func (self *_parser) parseConciseBody() ast.Expression {
+	// TODO: Figure out how to do look ahead
+	// TODO: if look_ahead != token.LEFT_BRACES, proceed to parse AssignmentExpression
 	idx0 := self.expect(token.LEFT_BRACES)
 }
 */

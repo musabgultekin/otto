@@ -10,8 +10,8 @@ node types are concerned) and may change in the future.
 package ast
 
 import (
-	"github.com/robertkrimen/otto/file"
-	"github.com/robertkrimen/otto/token"
+	"github.com/musabgultekin/otto/file"
+	"github.com/musabgultekin/otto/token"
 )
 
 // All nodes implement the Node interface.
@@ -179,45 +179,45 @@ type (
 	}
 
 	LexicalBindingExpression struct {
-		Name string 
-		Idx file.Idx 
+		Name        string
+		Idx         file.Idx
 		Initializer Expression
 	}
 
 	ArrowFunctionExpression struct {
-		ParameterList *ParameterList 
-		Idx 	       file.Idx
-		Body		   Statement
+		ParameterList *ParameterList
+		Idx           file.Idx
+		Body          Statement
 	}
 )
 
 // _expressionNode
 
-func (*ArrayLiteral) _expressionNode()          {}
-func (*AssignExpression) _expressionNode()      {}
-func (*BadExpression) _expressionNode()         {}
-func (*BinaryExpression) _expressionNode()      {}
-func (*BooleanLiteral) _expressionNode()        {}
-func (*BracketExpression) _expressionNode()     {}
-func (*CallExpression) _expressionNode()        {}
-func (*ConditionalExpression) _expressionNode() {}
-func (*DotExpression) _expressionNode()         {}
-func (*EmptyExpression) _expressionNode()       {}
-func (*FunctionLiteral) _expressionNode()       {}
-func (*Identifier) _expressionNode()            {}
-func (*NewExpression) _expressionNode()         {}
-func (*NullLiteral) _expressionNode()           {}
-func (*NumberLiteral) _expressionNode()         {}
-func (*ObjectLiteral) _expressionNode()         {}
-func (*RegExpLiteral) _expressionNode()         {}
-func (*SequenceExpression) _expressionNode()    {}
-func (*StringLiteral) _expressionNode()         {}
-func (*ThisExpression) _expressionNode()        {}
-func (*UnaryExpression) _expressionNode()       {}
-func (*VariableExpression) _expressionNode()    {}
-func (*LexicalBindingExpression) _expressionNode()        {}
-func (*ArrowFunctionExpression) _expressionNode()        {}
-func (*ParameterList) _expressionNode()        {}
+func (*ArrayLiteral) _expressionNode()             {}
+func (*AssignExpression) _expressionNode()         {}
+func (*BadExpression) _expressionNode()            {}
+func (*BinaryExpression) _expressionNode()         {}
+func (*BooleanLiteral) _expressionNode()           {}
+func (*BracketExpression) _expressionNode()        {}
+func (*CallExpression) _expressionNode()           {}
+func (*ConditionalExpression) _expressionNode()    {}
+func (*DotExpression) _expressionNode()            {}
+func (*EmptyExpression) _expressionNode()          {}
+func (*FunctionLiteral) _expressionNode()          {}
+func (*Identifier) _expressionNode()               {}
+func (*NewExpression) _expressionNode()            {}
+func (*NullLiteral) _expressionNode()              {}
+func (*NumberLiteral) _expressionNode()            {}
+func (*ObjectLiteral) _expressionNode()            {}
+func (*RegExpLiteral) _expressionNode()            {}
+func (*SequenceExpression) _expressionNode()       {}
+func (*StringLiteral) _expressionNode()            {}
+func (*ThisExpression) _expressionNode()           {}
+func (*UnaryExpression) _expressionNode()          {}
+func (*VariableExpression) _expressionNode()       {}
+func (*LexicalBindingExpression) _expressionNode() {}
+func (*ArrowFunctionExpression) _expressionNode()  {}
+func (*ParameterList) _expressionNode()            {}
 
 // ========= //
 // Statement //
@@ -352,35 +352,34 @@ type (
 
 	LexicalDeclarationStatement struct {
 		LetOrConst file.Idx
-		List []Expression
+		List       []Expression
 	}
 )
 
 // _statementNode
 
-func (*BadStatement) _statementNode()        {}
-func (*BlockStatement) _statementNode()      {}
-func (*BranchStatement) _statementNode()     {}
-func (*CaseStatement) _statementNode()       {}
-func (*CatchStatement) _statementNode()      {}
-func (*DebuggerStatement) _statementNode()   {}
-func (*DoWhileStatement) _statementNode()    {}
-func (*EmptyStatement) _statementNode()      {}
-func (*ExpressionStatement) _statementNode() {}
-func (*ForInStatement) _statementNode()      {}
-func (*ForStatement) _statementNode()        {}
-func (*FunctionStatement) _statementNode()   {}
-func (*IfStatement) _statementNode()         {}
-func (*LabelledStatement) _statementNode()   {}
-func (*ReturnStatement) _statementNode()     {}
-func (*SwitchStatement) _statementNode()     {}
-func (*ThrowStatement) _statementNode()      {}
-func (*TryStatement) _statementNode()        {}
-func (*VariableStatement) _statementNode()   {}
-func (*WhileStatement) _statementNode()      {}
-func (*WithStatement) _statementNode()       {}
-func (*LexicalDeclarationStatement) _statementNode()       {}
-
+func (*BadStatement) _statementNode()                {}
+func (*BlockStatement) _statementNode()              {}
+func (*BranchStatement) _statementNode()             {}
+func (*CaseStatement) _statementNode()               {}
+func (*CatchStatement) _statementNode()              {}
+func (*DebuggerStatement) _statementNode()           {}
+func (*DoWhileStatement) _statementNode()            {}
+func (*EmptyStatement) _statementNode()              {}
+func (*ExpressionStatement) _statementNode()         {}
+func (*ForInStatement) _statementNode()              {}
+func (*ForStatement) _statementNode()                {}
+func (*FunctionStatement) _statementNode()           {}
+func (*IfStatement) _statementNode()                 {}
+func (*LabelledStatement) _statementNode()           {}
+func (*ReturnStatement) _statementNode()             {}
+func (*SwitchStatement) _statementNode()             {}
+func (*ThrowStatement) _statementNode()              {}
+func (*TryStatement) _statementNode()                {}
+func (*VariableStatement) _statementNode()           {}
+func (*WhileStatement) _statementNode()              {}
+func (*WithStatement) _statementNode()               {}
+func (*LexicalDeclarationStatement) _statementNode() {}
 
 // =========== //
 // Declaration //
@@ -402,18 +401,16 @@ type (
 	}
 
 	LexicalBindingDeclaration struct {
-		LetOrConst file.Idx 
-		List []*LexicalBindingExpression
-
+		LetOrConst file.Idx
+		List       []*LexicalBindingExpression
 	}
 )
 
 // _declarationNode
 
-func (*FunctionDeclaration) _declarationNode() {}
-func (*VariableDeclaration) _declarationNode() {}
+func (*FunctionDeclaration) _declarationNode()       {}
+func (*VariableDeclaration) _declarationNode()       {}
 func (*LexicalBindingDeclaration) _declarationNode() {}
-
 
 // ==== //
 // Node //
@@ -433,58 +430,55 @@ type Program struct {
 // Idx0 //
 // ==== //
 
-func (self *ArrayLiteral) Idx0() file.Idx          { return self.LeftBracket }
-func (self *AssignExpression) Idx0() file.Idx      { return self.Left.Idx0() }
-func (self *BadExpression) Idx0() file.Idx         { return self.From }
-func (self *BinaryExpression) Idx0() file.Idx      { return self.Left.Idx0() }
-func (self *BooleanLiteral) Idx0() file.Idx        { return self.Idx }
-func (self *BracketExpression) Idx0() file.Idx     { return self.Left.Idx0() }
-func (self *CallExpression) Idx0() file.Idx        { return self.Callee.Idx0() }
-func (self *ConditionalExpression) Idx0() file.Idx { return self.Test.Idx0() }
-func (self *DotExpression) Idx0() file.Idx         { return self.Left.Idx0() }
-func (self *EmptyExpression) Idx0() file.Idx       { return self.Begin }
-func (self *FunctionLiteral) Idx0() file.Idx       { return self.Function }
-func (self *Identifier) Idx0() file.Idx            { return self.Idx }
-func (self *NewExpression) Idx0() file.Idx         { return self.New }
-func (self *NullLiteral) Idx0() file.Idx           { return self.Idx }
-func (self *NumberLiteral) Idx0() file.Idx         { return self.Idx }
-func (self *ObjectLiteral) Idx0() file.Idx         { return self.LeftBrace }
-func (self *RegExpLiteral) Idx0() file.Idx         { return self.Idx }
-func (self *SequenceExpression) Idx0() file.Idx    { return self.Sequence[0].Idx0() }
-func (self *StringLiteral) Idx0() file.Idx         { return self.Idx }
-func (self *ThisExpression) Idx0() file.Idx        { return self.Idx }
-func (self *UnaryExpression) Idx0() file.Idx       { return self.Idx }
-func (self *VariableExpression) Idx0() file.Idx    { return self.Idx }
-func (self *LexicalBindingExpression) Idx0() file.Idx        { return self.Idx }
-func (self *ArrowFunctionExpression) Idx0() file.Idx        { return self.Idx }
+func (self *ArrayLiteral) Idx0() file.Idx             { return self.LeftBracket }
+func (self *AssignExpression) Idx0() file.Idx         { return self.Left.Idx0() }
+func (self *BadExpression) Idx0() file.Idx            { return self.From }
+func (self *BinaryExpression) Idx0() file.Idx         { return self.Left.Idx0() }
+func (self *BooleanLiteral) Idx0() file.Idx           { return self.Idx }
+func (self *BracketExpression) Idx0() file.Idx        { return self.Left.Idx0() }
+func (self *CallExpression) Idx0() file.Idx           { return self.Callee.Idx0() }
+func (self *ConditionalExpression) Idx0() file.Idx    { return self.Test.Idx0() }
+func (self *DotExpression) Idx0() file.Idx            { return self.Left.Idx0() }
+func (self *EmptyExpression) Idx0() file.Idx          { return self.Begin }
+func (self *FunctionLiteral) Idx0() file.Idx          { return self.Function }
+func (self *Identifier) Idx0() file.Idx               { return self.Idx }
+func (self *NewExpression) Idx0() file.Idx            { return self.New }
+func (self *NullLiteral) Idx0() file.Idx              { return self.Idx }
+func (self *NumberLiteral) Idx0() file.Idx            { return self.Idx }
+func (self *ObjectLiteral) Idx0() file.Idx            { return self.LeftBrace }
+func (self *RegExpLiteral) Idx0() file.Idx            { return self.Idx }
+func (self *SequenceExpression) Idx0() file.Idx       { return self.Sequence[0].Idx0() }
+func (self *StringLiteral) Idx0() file.Idx            { return self.Idx }
+func (self *ThisExpression) Idx0() file.Idx           { return self.Idx }
+func (self *UnaryExpression) Idx0() file.Idx          { return self.Idx }
+func (self *VariableExpression) Idx0() file.Idx       { return self.Idx }
+func (self *LexicalBindingExpression) Idx0() file.Idx { return self.Idx }
+func (self *ArrowFunctionExpression) Idx0() file.Idx  { return self.Idx }
 
-func (self *BadStatement) Idx0() file.Idx        { return self.From }
-func (self *BlockStatement) Idx0() file.Idx      { return self.LeftBrace }
-func (self *BranchStatement) Idx0() file.Idx     { return self.Idx }
-func (self *CaseStatement) Idx0() file.Idx       { return self.Case }
-func (self *CatchStatement) Idx0() file.Idx      { return self.Catch }
-func (self *DebuggerStatement) Idx0() file.Idx   { return self.Debugger }
-func (self *DoWhileStatement) Idx0() file.Idx    { return self.Do }
-func (self *EmptyStatement) Idx0() file.Idx      { return self.Semicolon }
-func (self *ExpressionStatement) Idx0() file.Idx { return self.Expression.Idx0() }
-func (self *ForInStatement) Idx0() file.Idx      { return self.For }
-func (self *ForStatement) Idx0() file.Idx        { return self.For }
-func (self *FunctionStatement) Idx0() file.Idx   { return self.Function.Idx0() }
-func (self *IfStatement) Idx0() file.Idx         { return self.If }
-func (self *LabelledStatement) Idx0() file.Idx   { return self.Label.Idx0() }
-func (self *Program) Idx0() file.Idx             { return self.Body[0].Idx0() }
-func (self *ReturnStatement) Idx0() file.Idx     { return self.Return }
-func (self *SwitchStatement) Idx0() file.Idx     { return self.Switch }
-func (self *ThrowStatement) Idx0() file.Idx      { return self.Throw }
-func (self *TryStatement) Idx0() file.Idx        { return self.Try }
-func (self *VariableStatement) Idx0() file.Idx   { return self.Var }
-func (self *WhileStatement) Idx0() file.Idx      { return self.While }
-func (self *WithStatement) Idx0() file.Idx       { return self.With }
-func (self *LexicalDeclarationStatement) Idx0() file.Idx       { return self.LetOrConst }
-func (self *ParameterList) Idx0() file.Idx        { return self.Opening }
-
-
-
+func (self *BadStatement) Idx0() file.Idx                { return self.From }
+func (self *BlockStatement) Idx0() file.Idx              { return self.LeftBrace }
+func (self *BranchStatement) Idx0() file.Idx             { return self.Idx }
+func (self *CaseStatement) Idx0() file.Idx               { return self.Case }
+func (self *CatchStatement) Idx0() file.Idx              { return self.Catch }
+func (self *DebuggerStatement) Idx0() file.Idx           { return self.Debugger }
+func (self *DoWhileStatement) Idx0() file.Idx            { return self.Do }
+func (self *EmptyStatement) Idx0() file.Idx              { return self.Semicolon }
+func (self *ExpressionStatement) Idx0() file.Idx         { return self.Expression.Idx0() }
+func (self *ForInStatement) Idx0() file.Idx              { return self.For }
+func (self *ForStatement) Idx0() file.Idx                { return self.For }
+func (self *FunctionStatement) Idx0() file.Idx           { return self.Function.Idx0() }
+func (self *IfStatement) Idx0() file.Idx                 { return self.If }
+func (self *LabelledStatement) Idx0() file.Idx           { return self.Label.Idx0() }
+func (self *Program) Idx0() file.Idx                     { return self.Body[0].Idx0() }
+func (self *ReturnStatement) Idx0() file.Idx             { return self.Return }
+func (self *SwitchStatement) Idx0() file.Idx             { return self.Switch }
+func (self *ThrowStatement) Idx0() file.Idx              { return self.Throw }
+func (self *TryStatement) Idx0() file.Idx                { return self.Try }
+func (self *VariableStatement) Idx0() file.Idx           { return self.Var }
+func (self *WhileStatement) Idx0() file.Idx              { return self.While }
+func (self *WithStatement) Idx0() file.Idx               { return self.With }
+func (self *LexicalDeclarationStatement) Idx0() file.Idx { return self.LetOrConst }
+func (self *ParameterList) Idx0() file.Idx               { return self.Opening }
 
 // ==== //
 // Idx1 //
@@ -523,15 +517,14 @@ func (self *VariableExpression) Idx1() file.Idx {
 	return self.Initializer.Idx1()
 }
 
-func (self *LexicalBindingExpression) Idx1() file.Idx { 
+func (self *LexicalBindingExpression) Idx1() file.Idx {
 	if self.Initializer == nil {
 		return file.Idx(int(self.Idx) + len(self.Name) + 1)
 	}
 	return self.Initializer.Idx1()
 }
-func (self *ArrowFunctionExpression) Idx1() file.Idx  { return self.Body.Idx1() }
-func (self *ParameterList) Idx1() file.Idx        { return self.Closing }
-
+func (self *ArrowFunctionExpression) Idx1() file.Idx { return self.Body.Idx1() }
+func (self *ParameterList) Idx1() file.Idx           { return self.Closing }
 
 func (self *BadStatement) Idx1() file.Idx        { return self.To }
 func (self *BlockStatement) Idx1() file.Idx      { return self.RightBrace + 1 }
@@ -551,14 +544,13 @@ func (self *IfStatement) Idx1() file.Idx {
 	}
 	return self.Consequent.Idx1()
 }
-func (self *LabelledStatement) Idx1() file.Idx { return self.Colon + 1 }
-func (self *Program) Idx1() file.Idx           { return self.Body[len(self.Body)-1].Idx1() }
-func (self *ReturnStatement) Idx1() file.Idx   { return self.Return }
-func (self *SwitchStatement) Idx1() file.Idx   { return self.Body[len(self.Body)-1].Idx1() }
-func (self *ThrowStatement) Idx1() file.Idx    { return self.Throw }
-func (self *TryStatement) Idx1() file.Idx      { return self.Try }
-func (self *VariableStatement) Idx1() file.Idx { return self.List[len(self.List)-1].Idx1() }
-func (self *WhileStatement) Idx1() file.Idx    { return self.Body.Idx1() }
-func (self *WithStatement) Idx1() file.Idx     { return self.Body.Idx1() }
+func (self *LabelledStatement) Idx1() file.Idx           { return self.Colon + 1 }
+func (self *Program) Idx1() file.Idx                     { return self.Body[len(self.Body)-1].Idx1() }
+func (self *ReturnStatement) Idx1() file.Idx             { return self.Return }
+func (self *SwitchStatement) Idx1() file.Idx             { return self.Body[len(self.Body)-1].Idx1() }
+func (self *ThrowStatement) Idx1() file.Idx              { return self.Throw }
+func (self *TryStatement) Idx1() file.Idx                { return self.Try }
+func (self *VariableStatement) Idx1() file.Idx           { return self.List[len(self.List)-1].Idx1() }
+func (self *WhileStatement) Idx1() file.Idx              { return self.Body.Idx1() }
+func (self *WithStatement) Idx1() file.Idx               { return self.Body.Idx1() }
 func (self *LexicalDeclarationStatement) Idx1() file.Idx { return self.List[len(self.List)-1].Idx1() }
-

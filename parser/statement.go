@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"github.com/robertkrimen/otto/ast"
-	"github.com/robertkrimen/otto/token"
+	"github.com/musabgultekin/otto/ast"
+	"github.com/musabgultekin/otto/token"
 )
 
 func (self *_parser) parseBlockStatement() *ast.BlockStatement {
@@ -96,7 +96,7 @@ func (self *_parser) parseStatement() ast.Statement {
 		return self.parseTryStatement()
 	case token.CONST:
 		return self.parseLexicalDeclaration(token.CONST)
-	case token.LET: 
+	case token.LET:
 		return self.parseLexicalDeclaration(token.LET)
 	}
 
@@ -679,12 +679,11 @@ func (self *_parser) parseLexicalDeclaration(expectedToken token.Token) *ast.Lex
 
 	idx := self.expect(expectedToken)
 
-
 	list := self.parseBindingList(idx)
 
 	statement := &ast.LexicalDeclarationStatement{
-		LetOrConst: idx, 
-		List: list,
+		LetOrConst: idx,
+		List:       list,
 	}
 
 	if self.mode&StoreComments != 0 {

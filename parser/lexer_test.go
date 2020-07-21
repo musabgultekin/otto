@@ -3,9 +3,9 @@ package parser
 import (
 	"testing"
 
-	"github.com/robertkrimen/otto/file"
-	"github.com/robertkrimen/otto/terst"
-	"github.com/robertkrimen/otto/token"
+	"github.com/musabgultekin/otto/file"
+	"github.com/musabgultekin/otto/terst"
+	"github.com/musabgultekin/otto/token"
 )
 
 var tt = terst.Terst
@@ -349,52 +349,51 @@ Second line \
 			token.RIGHT_BRACKET, "", 6,
 		)
 
-		// testing const 
+		// testing const
 
-		test("const PI = 3.14", 
+		test("const PI = 3.14",
 			token.CONST, "const", 1,
-			token.IDENTIFIER, "PI", 7, 
-			token.ASSIGN, "", 10, 
+			token.IDENTIFIER, "PI", 7,
+			token.ASSIGN, "", 10,
 			token.NUMBER, "3.14", 12,
 		)
 
 		// testing let
 
-		test("let x = 5", 
+		test("let x = 5",
 			token.LET, "let", 1,
-			token.IDENTIFIER, "x", 5, 
-			token.ASSIGN, "", 7, 
-			token.NUMBER, "5", 9 ,
+			token.IDENTIFIER, "x", 5,
+			token.ASSIGN, "", 7,
+			token.NUMBER, "5", 9,
 		)
 
-		// testing arrow functions 
+		// testing arrow functions
 
-		test("let x = y => y + 1", 
+		test("let x = y => y + 1",
 			token.LET, "let", 1,
-			token.IDENTIFIER, "x", 5, 
-			token.ASSIGN, "", 7, 
-			token.IDENTIFIER, "y", 9 ,
+			token.IDENTIFIER, "x", 5,
+			token.ASSIGN, "", 7,
+			token.IDENTIFIER, "y", 9,
 			token.ARROW_OPERATOR, "", 11,
 			token.IDENTIFIER, "y", 14,
 			token.PLUS, "", 16,
 			token.NUMBER, "1", 18,
 		)
 
-		test("let some_function = (v, i) => v + i", 
+		test("let some_function = (v, i) => v + i",
 			token.LET, "let", 1,
-			token.IDENTIFIER, "some_function", 5, 
-			token.ASSIGN, "", 19, 
-			token.LEFT_PARENTHESIS, "", 21, 
-			token.IDENTIFIER, "v", 22, 
-			token.COMMA, "", 23, 
+			token.IDENTIFIER, "some_function", 5,
+			token.ASSIGN, "", 19,
+			token.LEFT_PARENTHESIS, "", 21,
+			token.IDENTIFIER, "v", 22,
+			token.COMMA, "", 23,
 			token.IDENTIFIER, "i", 25,
 			token.RIGHT_PARENTHESIS, "", 26,
-			token.ARROW_OPERATOR, "", 28, 
-			token.IDENTIFIER, "v", 31, 
-			token.PLUS, "", 33, 
+			token.ARROW_OPERATOR, "", 28,
+			token.IDENTIFIER, "v", 31,
+			token.PLUS, "", 33,
 			token.IDENTIFIER, "i", 35,
 		)
-
 
 		// ILLEGAL
 
