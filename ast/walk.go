@@ -1,6 +1,8 @@
 package ast
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Visitor Enter method is invoked for each node encountered by Walk.
 // If the result visitor w is not nil, Walk visits each of the children
@@ -216,6 +218,10 @@ func Walk(v Visitor, n Node) {
 			for _, e := range n.List {
 				Walk(v, e)
 			}
+		}
+	case *LexicalBindingExpression:
+		if n != nil {
+			Walk(v, n.Initializer)
 		}
 	default:
 		panic(fmt.Sprintf("Walk: unexpected node type %T", n))
