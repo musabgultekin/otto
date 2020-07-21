@@ -211,6 +211,12 @@ func Walk(v Visitor, n Node) {
 			Walk(v, n.Object)
 			Walk(v, n.Body)
 		}
+	case *LexicalDeclarationStatement:
+		if n != nil {
+			for _, e := range n.List {
+				Walk(v, e)
+			}
+		}
 	default:
 		panic(fmt.Sprintf("Walk: unexpected node type %T", n))
 	}
